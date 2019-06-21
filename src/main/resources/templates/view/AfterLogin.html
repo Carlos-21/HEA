@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head
+	th:include="/auxiliar/import :: headFragment (pageTitle='He&A Coorp')">
+<meta charset="UTF-8" />
+</head>
+<link rel="stylesheet" type="text/css" href="#"
+	th:href="@{/css/clases/EL NOMBRE DE TU CSS SI QUEIRES USAR UNO}" />
+<body>
+	<div th:insert="/auxiliar/navbar :: navbar(${nombreUsuario})"></div>
+	<div class="panel-generico form-horizontal col-md-offset-2"
+		id="panel-login">
+		<ul class="list-group">
+			<li class="list-group-item"><i style="color: blue;"
+				class="fas fa-arrow-circle-right"></i> Hola <strong><span
+					th:text="${nombreUsuario}"></span></strong>, aqu&iacute; algunas
+				indiaciones:</li>
+			<li class="list-group-item"><i style="color: green;"
+				class="fas fa-check"></i> No abras tu sesi&oacute;n en lugares
+				desconocidos.</li>
+			<li class="list-group-item"><i style="color: green;"
+				class="fas fa-check"></i> No des tu contrase&ntilde;a a otras
+				personas.</li>
+			<li class="list-group-item"><i style="color: green;"
+				class="fas fa-check"></i> Tu sesi&oacute;n se cerrar&aacute;
+				automaticamente en 30 minutos.</li>
+			<li class="list-group-item"><i style="color: green;"
+				class="fas fa-check"></i> Si no vas a utilizar la p&aacute;gina, por
+				favor cierra la sesi&oacute;n.</li>
+		</ul>
+	</div>
+	<br>
+
+	<div class="panel-generico form-horizontal col-md-offset-2"
+		id="panel-login">
+		<div class="form-group">
+			<div class="col-md-5">
+				<div class="panel panel-info">
+					<div class="panel-heading">
+						<i style="color: blue" class="fas fa-university"></i>&nbsp;NUESTRA
+						MISI&Oacute;N
+					</div>
+					<div class="panel-body">
+						<p align="center">Somos una empresa comprometida en satisfacer
+							las necesidades de nuestros clientes, suministrando la mejor
+							calidad en insumos y equipos médicos para el sector salud dentro
+							de los más elevados principios éticos y de responsabilidad
+							social.</p>
+					</div>
+				</div>
+				<div class="panel panel-info">
+					<div class="panel-heading">
+						<i style="color: blue" class="fas fa-university"></i>&nbsp;NUESTRA
+						VISI&Oacute;N
+					</div>
+					<div class="panel-body">
+						<p align="center">Ser la empresa peruana más reconocida,
+							admirada y valorada, así como un importante contribuidor de valor
+							en la fabricación de equipos médicos a través de:</p>
+						<ul>
+							<li>Crecimiento del valor de su participación del mercado a
+								través de una mayor llegada a tal.</li>
+							<li>Seguir con el uso continuo de la tecnología para generar
+								una mayor confianza de nuestros productos.</li>
+							<li>Ser un actor ejemplar en la sociedad.</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-7">
+				<div class="panel panel-info">
+					<div class="panel-heading">
+						<i style="color: blue" class="fas fa-box-open"></i>&nbsp;NUESTROS
+						PRODUCTOS
+					</div>
+					<div class="panel-body">
+						<div class="form-group">
+							<div class="col-md-4">
+								<p align="center"><strong>Autoclave</strong></p>
+								<img th:src="@{/images/inicio/1.png}" width="120" height="136" 
+									style="margin-left: auto; margin-right: auto;" />
+							</div>
+							<div class="col-md-4">
+								<p align="center"><strong>Cabina de Flujo Laminar</strong></p>
+								<img th:src="@{/images/inicio/2.jpg}" width="120" height="136"
+									style="margin-left: auto; margin-right: auto;" />
+							</div>
+							<div class="col-md-4">
+								<p align="center"><strong>L&aacute;mpara Cial&iacute;tica</strong></p>
+								<img th:src="@{/images/inicio/3.jpg}" width="120" height="136"
+									style="margin-left: auto; margin-right: auto;" />
+							</div>
+						</div>
+						<div class="form-group">
+							<div class="col-md-4">
+								<p align="center"><strong>Destilador de Agua</strong></p>
+								<img th:src="@{/images/inicio/4.jpg}" width="120" height="136"
+									style="margin-left: auto; margin-right: auto;" />
+							</div>
+							<div class="col-md-4">
+								<p align="center"><strong>Coagulador de Cultivos</strong></p>
+								<img th:src="@{/images/inicio/5.jpg}" width="120" height="136"
+									style="margin-left: auto; margin-right: auto;" />
+							</div>
+							<div class="col-md-4">
+								<p align="center"><strong>Marmitas</strong></p>
+								<img th:src="@{/images/inicio/6.jpg}" width="120" height="136"
+									style="margin-left: auto; margin-right: auto;" />
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript"
+		th:src="@{/js/clases/EL NOMBRE DE TU JS}"></script>
+
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head
+	th:include="/auxiliar/import :: headFragment (pageTitle='He&A Coorp')">
+<meta charset="UTF-8" />
+</head>
+<link rel="stylesheet" type="text/css" href="#"
+	th:href="@{/css/clases/EL NOMBRE DE TU CSS SI QUEIRES USAR UNO}" />
+<body>
+	<div th:insert="/auxiliar/navbar :: navbar"></div>
+	<div class="panel-generico form-horizontal col-md-offset-2"
+		id="panel-login">
+		<form action="" th:action="@{/EL NOMBRE DE TU ACTION}"
+			th:object="${EL NOMBRE DE TU OBJETO}" method="post">
+			<div class="form-group">
+					Acá empieza a poner tu codigo
+			</div>
+		</form>
+		<br> <br>
+	</div>
+
+	<script type="text/javascript"
+		th:src="@{/js/clases/EL NOMBRE DE TU JS}"></script>
+
+</body>
+</html>

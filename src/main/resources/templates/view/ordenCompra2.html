@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head
+	th:include="/auxiliar/import :: headFragment (pageTitle='He&A Coorp')">
+<meta charset="UTF-8" />
+</head>
+<link rel="stylesheet" type="text/css" href="#"
+	th:href="@{/css/clases/EL NOMBRE DE TU CSS SI QUEIRES USAR UNO}" />
+<body>
+	<div th:insert="/auxiliar/navbar :: navbar"></div>
+
+	<form action="" method="post">
+		<br>
+		<div class="form-group">
+			<div class="col-md-6 col-md-offset-3 alert alert-success">
+				<div name="resultadoTexto" id="resultadoTexto">Orden de Compra registrada con &eacute;xito.</div>
+			</div>
+		</div>
+	</form>
+	<br>
+	<br>
+
+
+	<script type="text/javascript"
+		th:src="@{/js/clases/EL NOMBRE DE TU JS}"></script>
+
+</body>
+</html>

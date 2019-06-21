@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.6.0.final using JasperReports Library version 6.6.0  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="OrdenCompra" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="48550f1a-78a2-4d28-8df6-45f32fb59dce">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="TallerSistemas"/>
+	<parameter name="P_CODDOCU" class="java.lang.String"/>
+	<parameter name="P_NOMBRECLIENTE" class="java.lang.String"/>
+	<parameter name="P_TOTALPAGAR" class="java.lang.String"/>
+	<parameter name="P_APPATCLIENTEU" class="java.lang.String"/>
+	<parameter name="P_APMATCLIENTE" class="java.lang.String"/>
+	<parameter name="P_CORREOCLIENTE" class="java.lang.String"/>
+	<parameter name="P_TELEFONOCLIENTE" class="java.lang.String"/>
+	<parameter name="LOGO" class="java.lang.String"/>
+	<parameter name="p_origen" class="java.lang.String"/>
+	<parameter name="p_dest" class="java.lang.String"/>
+	<parameter name="P_COSTO" class="java.math.BigDecimal"/>
+	<parameter name="P_FECHA" class="java.lang.String"/>
+	<queryString language="plsql">
+		<![CDATA[select 
+    c.codproducto,(select p.nombreprod from productos p where p.codprod=c.codproducto) as nombrematprima,c.cantidadproducto,c.precioproducto
+ from detfactura c where c.CODFACTURA=$P{P_CODDOCU}]]>
+	</queryString>
+	<field name="CODPRODUCTO" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="CODPRODUCTO"/>
+	</field>
+	<field name="NOMBREMATPRIMA" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="NOMBREMATPRIMA"/>
+	</field>
+	<field name="CANTIDADPRODUCTO" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="CANTIDADPRODUCTO"/>
+	</field>
+	<field name="PRECIOPRODUCTO" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="PRECIOPRODUCTO"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="338" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="20" y="319" width="100" height="19" backcolor="#63AB7C" uuid="1e148b73-83b7-477a-8dd4-fc4f30770fe4"/>
+				<box>
+					<pen lineWidth="0.3"/>
+					<topPen lineWidth="0.3" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.3" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.3" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.3" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Codigo de Producto]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="120" y="319" width="188" height="19" backcolor="#63AB7C" uuid="0897256c-4c76-4fa0-bc9e-655ad6410f85"/>
+				<box>
+					<pen lineWidth="0.3"/>
+					<topPen lineWidth="0.3" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.3" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.3" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.3" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Nombre de Producto]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="408" y="319" width="100" height="19" backcolor="#63AB7C" uuid="bf414bd6-7afc-4831-9fbf-32b6ce679e09"/>
+				<box>
+					<pen lineWidth="0.3"/>
+					<topPen lineWidth="0.3" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.3" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.3" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.3" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Precio de Producto]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="308" y="319" width="100" height="19" backcolor="#63AB7C" uuid="a2b37abe-92bf-4ca6-a081-d4ac3443a8be"/>
+				<box>
+					<pen lineWidth="0.3"/>
+					<topPen lineWidth="0.3" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.3" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.3" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.3" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Cantidad de Producto]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="90" y="20" width="400" height="30" uuid="c6f0d61a-ea76-44c0-9c7b-01959c3c81e4"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="16" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["HE & A Coorporación Industrial del Perú"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="109" y="111" width="148" height="20" backcolor="#CAEBC0" uuid="ebf5fea9-9ad2-4cf3-bf9b-a1fdc24810c7"/>
+				<box>
+					<pen lineWidth="0.3"/>
+				</box>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{P_NOMBRECLIENTE}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="21" y="111" width="88" height="20" uuid="a176c441-0fd8-40eb-a467-07cd6fece236"/>
+				<box>
+					<pen lineWidth="0.3"/>
+				</box>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Nombre]]></text>
+			</staticText>
+			<textField>
+				<reportElement mode="Opaque" x="360" y="111" width="148" height="20" backcolor="#CAEBC0" uuid="6e91a88b-c430-4d7c-a998-43654ad95af4"/>
+				<box>
+					<pen lineWidth="0.3"/>
+				</box>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{P_APPATCLIENTEU}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="280" y="111" width="80" height="20" uuid="ae7cafa7-1eb5-47fe-bce1-45aff62c8b20"/>
+				<box>
+					<pen lineWidth="0.3"/>
+				</box>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Apellido Paterno]]></text>
+			</staticText>
+			<textField>
+				<reportElement mode="Opaque" x="109" y="131" width="148" height="20" backcolor="#CAEBC0" uuid="a854f9f6-5e95-41d6-9a00-758a979aedb3"/>
+				<box>
+					<pen lineWidth="0.3"/>
+				</box>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{P_APMATCLIENTE}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="21" y="131" width="88" height="20" uuid="1752b996-b6b1-469e-882e-c072218bbde9"/>
+				<box>
+					<pen lineWidth="0.3"/>
+				</box>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Apellido Materno]]></text>
+			</staticText>
+			<textField>
+				<reportElement mode="Opaque" x="360" y="131" width="148" height="20" backcolor="#CAEBC0" uuid="9b43336d-8cfe-4138-90f7-8815ec7569a8"/>
+				<box>
+					<pen lineWidth="0.3"/>
+				</box>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{P_CORREOCLIENTE}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="280" y="131" width="80" height="20" uuid="8fae6a56-3e75-4604-8d12-e79ab7312dcf"/>
+				<box>
+					<pen lineWidth="0.3"/>
+				</box>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Correo]]></text>
+			</staticText>
+			<textField>
+				<reportElement mode="Opaque" x="109" y="151" width="148" height="20" backcolor="#CAEBC0" uuid="c7706cc2-e9f8-4a90-a54a-8586f802a5e7"/>
+				<box>
+					<pen lineWidth="0.3"/>
+				</box>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{P_TELEFONOCLIENTE}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="21" y="151" width="88" height="20" uuid="73d1e7cf-d0ff-41bb-872e-9d0f45342e7f"/>
+				<box>
+					<pen lineWidth="0.3"/>
+				</box>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Teléfono]]></text>
+			</staticText>
+			<image>
+				<reportElement x="21" y="0" width="69" height="70" uuid="81678a10-11a0-42dd-a064-1945464e3644"/>
+				<imageExpression><![CDATA[$P{LOGO}]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="209" y="60" width="60" height="20" uuid="b82eeae2-771f-48d4-9dab-bfedb5a70e67"/>
+				<box>
+					<pen lineWidth="0.3"/>
+					<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<text><![CDATA[Factura Nro°]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="269" y="60" width="60" height="20" uuid="a1eaa11d-ce73-4aaf-82ef-83d980626d1f"/>
+				<textFieldExpression><![CDATA[$P{P_CODDOCU}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="109" y="211" width="398" height="20" backcolor="#CAEBC0" uuid="8019890e-527e-4b1a-b719-29f6c0739c1e"/>
+				<box>
+					<pen lineWidth="0.3"/>
+				</box>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{p_origen}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="21" y="211" width="88" height="20" uuid="2dd47e63-6b55-43d2-bc7d-009060f7188a"/>
+				<box>
+					<pen lineWidth="0.3"/>
+				</box>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Origen]]></text>
+			</staticText>
+			<textField>
+				<reportElement mode="Opaque" x="109" y="231" width="398" height="20" backcolor="#CAEBC0" uuid="c0de4d2b-241b-4cff-b7dd-e39067f45261"/>
+				<box>
+					<pen lineWidth="0.3"/>
+				</box>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{p_dest}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="21" y="231" width="88" height="20" uuid="820d5311-b99a-4743-a87a-c26bbff0356e"/>
+				<box>
+					<pen lineWidth="0.3"/>
+				</box>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Destino]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="270" y="265" width="88" height="20" uuid="fedac91f-2753-4492-85dc-7a8487060c2d"/>
+				<box>
+					<pen lineWidth="0.3"/>
+				</box>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Total a Pagar]]></text>
+			</staticText>
+			<textField>
+				<reportElement mode="Opaque" x="358" y="265" width="148" height="20" backcolor="#CAEBC0" uuid="7107bec0-b33f-41cf-a2b1-89e60536eefc"/>
+				<box>
+					<pen lineWidth="0.3"/>
+				</box>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{P_COSTO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="20" y="86" width="488" height="20" backcolor="#DCE3DA" uuid="b732fdcb-501d-48cd-8975-c049290cf0d4"/>
+				<box>
+					<pen lineWidth="0.3"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["INFORMACION DE CLIENTE"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="20" y="186" width="488" height="20" backcolor="#DCE3DA" uuid="1a84778b-3874-48ab-90fa-9e5750f2e31d"/>
+				<box>
+					<pen lineWidth="0.3"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["DATOS DE FACTURACION"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement mode="Opaque" x="20" y="292" width="488" height="20" backcolor="#DCE3DA" uuid="2a82886f-ceab-4188-be9d-4dc9e0d2218a"/>
+				<box>
+					<pen lineWidth="0.3"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["INFORMACION DE PRODUCTOS"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="358" y="61" width="150" height="19" uuid="435d5a93-21da-49d1-aebb-fdba28383b8a"/>
+				<textFieldExpression><![CDATA[$P{P_FECHA}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="19">
+			<textField>
+				<reportElement x="20" y="0" width="100" height="19" uuid="7b90983d-f2a1-45a7-8a80-bad5e730350b"/>
+				<box>
+					<pen lineWidth="0.3"/>
+					<topPen lineWidth="0.3" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.3" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.3" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.3" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{CODPRODUCTO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="120" y="0" width="188" height="19" uuid="e1da7bfd-a7ba-4949-9184-350019b8303b"/>
+				<box>
+					<pen lineWidth="0.3"/>
+					<topPen lineWidth="0.3" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.3" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.3" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.3" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{NOMBREMATPRIMA}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="308" y="0" width="100" height="19" uuid="0e5c018e-3976-4ec8-accb-45952adfe796"/>
+				<box>
+					<pen lineWidth="0.3"/>
+					<topPen lineWidth="0.3" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.3" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.3" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.3" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{CANTIDADPRODUCTO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="408" y="0" width="100" height="19" uuid="5260c718-cacf-428e-ac17-1c174e9a489d"/>
+				<box>
+					<pen lineWidth="0.3"/>
+					<topPen lineWidth="0.3" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="0.3" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="0.3" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="0.3" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{PRECIOPRODUCTO}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

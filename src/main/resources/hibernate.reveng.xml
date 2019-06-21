@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.org/dtd/hibernate-reverse-engineering-3.0.dtd" >
+
+<hibernate-reverse-engineering>
+  <table-filter match-schema="EMPRESA" match-name="CABORDENCOMPRA"/>
+  <table-filter match-schema="EMPRESA" match-name="CABORDENVENTA"/>
+  <table-filter match-schema="EMPRESA" match-name="CATEGORIA"/>
+  <table-filter match-schema="EMPRESA" match-name="CLIENTES"/>
+  <table-filter match-schema="EMPRESA" match-name="COTIZACIONTEMP"/>
+  <table-filter match-schema="EMPRESA" match-name="COTIZACIONTEMPDET"/>
+  <table-filter match-schema="EMPRESA" match-name="DETFACTURA"/>
+  <table-filter match-schema="EMPRESA" match-name="DETORDENCOMPRA"/>
+  <table-filter match-schema="EMPRESA" match-name="DETORDENVENTA"/>
+  <table-filter match-schema="EMPRESA" match-name="FACTURA"/>
+  <table-filter match-schema="EMPRESA" match-name="INVENTARIO"/>
+  <table-filter match-schema="EMPRESA" match-name="MATERIAPRIMA"/>
+  <table-filter match-schema="EMPRESA" match-name="PRODUCTOS"/>
+  <table-filter match-schema="EMPRESA" match-name="PROVEEDORES"/>
+  <table-filter match-schema="EMPRESA" match-name="ROL"/>
+  <table-filter match-schema="EMPRESA" match-name="USUARIOS"/>
+</hibernate-reverse-engineering>

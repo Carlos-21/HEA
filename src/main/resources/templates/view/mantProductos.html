@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head
+	th:include="/auxiliar/import :: headFragment (pageTitle='He&A Coorp')">
+<meta charset="UTF-8" />
+</head>
+
+<body>
+	<div th:insert="/auxiliar/navbar :: navbar(${nombreUsuario})"></div>
+	<div class="panel-generico form-horizontal col-md-offset-2"
+		id="panel-login">
+		<form action="" th:action="@{/addProductos}" th:object="${Productos}"
+			method="post">
+			<div class="form-group ">
+				<div th:switch="${msj}" class="col-md-12 mx-auto my-1">
+					<div th:case="'Agregar'"
+						th:include="/auxiliar/alert :: alerta(mensaje='Exito...! Se registró el producto '+${nombreProducto}+'. ', tipo='success')">
+					</div>
+					<div th:case="'Modificar'"
+						th:include="/auxiliar/alert :: alerta(mensaje='Exito...! Se modificó el producto '+${nombreProducto}+'. ', tipo='success')">
+					</div>
+					<div th:case="'Error'"
+						th:include="/auxiliar/alert :: alerta(mensaje='Problemas...! Algo salió mal.', tipo='danger')">
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-md-3">
+					<img th:src="@{/images/logo.png}" width="200p" height="200"
+						class="visible-lg visible-md hidden-xs"
+						style="margin-left: auto; margin-right: auto;" />
+					<p style="text-align: center;">
+						<strong> Mantenimiento de Productos </strong>
+					</p>
+					<button type="button" id="showIngresar" name="showIngresar"
+						class="btn btn-primary btn-sm botones">Ingresar</button>
+					<button type="button" id="showModificar" name="showModificar"
+						class="btn btn-primary btn-sm botones">Modificar</button>
+					<button type="button" id="showEliminar" name="showEliminar"
+						class="btn btn-primary btn-sm botones">Eliminar</button>
+					<input type="hidden" id="tipoAccion" name="tipoAccion" />
+				</div>
+
+				<div class="col-md-9" id="seccionCreate">
+					<h3>Ingresar Productos</h3>
+					<br>
+					<div class="form-group">
+						<label class="col-md-2 control-label">Código</label>
+						<div class="col-md-3">
+							<div class="input-group">
+								<input type="text" class="form-control input-sm"
+									id="cotmatprima" name="cotmatprima" th:field="*{codprod}"
+									placeholder="Ingrese el Código" required /> <span
+									class="input-group-btn"
+									onkeypress="obtenerDatosProductosEnter('upd')">
+									<button type="button" class="btn btn-default btn-sm"
+										id="btnBuscaMP" name="btnBuscaMP"
+										onclick="obtenerDatosProductosBtn()">
+										<i class="fas fa-search"></i>
+									</button>
+								</span>
+							</div>
+						</div>
+						<div class="col-md-3" id="btnBuscaLista">
+							<button type="button" onclick="obtenerListaProducto()"
+								class="btn btn-defaul btn-block btn-sm">Buscar</button>
+						</div>
+						<label class="col-md-2 control-label" id="lblNombre">Nombre</label>
+						<div class="col-md-3">
+							<input type="text" class="form-control input-sm"
+								id="nombrematprima" name="nombrematprima"
+								th:field="*{nombreprod}" placeholder="Ingrese el Nombre"
+								required />
+						</div>
+
+					</div>
+					<div class="form-group" id="grupo1">
+						<label
+							class="col-md-2 control-label visible-lg hidden-md hidden-xs hidden-sm">Precio
+							de Ingreso</label> <label
+							class="col-md-2 control-label hidden-lg visible-md visible-xs visible-sm">Precio
+						</label>
+						<div class="col-md-3">
+							<input type="number" class="form-control input-sm"
+								id="preciomatprima" name="preciomatprima" th:field="*{precio}"
+								placeholder="Ingrese el precio" required />
+						</div>
+						<label
+							class="col-md-2 control-label visible-lg hidden-md hidden-xs hidden-sm"
+							id="lblcantmatprima">Inventario </label>
+						<div class="col-md-3">
+							<input type="text" class="form-control input-sm"
+								id="cantidadmatprima" name="cantidadmatprima"
+								placeholder="Ingrese la Cantidad" required />
+						</div>
+					</div>
+					<div class="form-group" id="grupo3">
+						<label class="col-md-2 control-label">Descripcion</label>
+						<div class="col-md-8 ">
+							<textarea class="form-control input-sm" rows="5"
+								th:field="*{descripcionprod}" id="descmatprima"
+								name="descmatprima"
+								placeholder="Ingrese una descripción para el producto."></textarea>
+						</div>
+					</div>
+					<div id="c_tablaProducto"></div>
+				</div>
+			</div>
+			<input type="hidden" id="operacion" name="operacion" />
+			<input type="hidden" id="auxCodInsumo" name="auxCodInsumo" />
+			<div class="form-group" id="auxBotonesFooter">
+				<div class="col-md-6 col-md-offset-3" style="float: right">
+					<button type="submit" class="btn btn-success btn-sm ">Guardar</button>
+					<button type="button" class="btn btn-danger btn-sm ">Cancelar</button>
+				</div>
+			</div>
+
+			<!-- Modal Confirmar Eliminacion -->
+
+			<div class="modal fade" id="myModal" role="dialog">
+				<div class="modal-dialog modal-sm">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal">&times;</button>
+							<h4 class="modal-title">Confirmar eliminaci&oacute;n.</h4>
+						</div>
+						<div class="modal-body">
+							<p id="parrafoConfirmacion"></p>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-success"
+								onclick="eliminarInsumoConf()">SI</button>
+							<button type="button" class="btn btn-danger" data-dismiss="modal">NO</button>
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+		</form>
+		<br> <br>
+	</div>
+
+	<script type="text/javascript"
+		th:src="@{/js/clases/jsMantProductos.js}"></script>
+
+</body>
+</html>

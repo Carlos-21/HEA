@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head
+	th:include="/auxiliar/import :: headFragment (pageTitle='He&A Coorp')">
+<meta charset="UTF-8" />
+</head>
+<body>
+	<div th:insert="/auxiliar/navbar :: navbar(${nombreUsuario})"></div>
+	<div class="panel-generico form-horizontal col-md-offset-2"
+		id="panel-login">
+		<form action="" th:action="@{/addCliente}" th:object="${cliente}"
+			method="get">
+			<div class="form-group ">
+				<div th:switch="${msj}" class="col-md-12 mx-auto my-1">
+					<div th:case="'Agregar'"
+						th:include="/auxiliar/alert :: alerta(mensaje='Exito...! Se registró el cliente '+${nombreCliente}+'. ', tipo='success')">
+					</div>
+					<div th:case="'Modificar'"
+						th:include="/auxiliar/alert :: alerta(mensaje='Exito...! Se modificó el cliente '+${nombreCliente}+'. ', tipo='success')">
+					</div>
+					<div th:case="'Error'"
+						th:include="/auxiliar/alert :: alerta(mensaje='Problemas...! Algo salió mal.', tipo='danger')">
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-md-3">
+					<img th:src="@{/images/logo.png}" width="200p" height="200"
+						class="visible-lg visible-md hidden-xs"
+						style="margin-left: auto; margin-right: auto;" />
+					<p style="text-align: center;">
+						<strong> Mantenimiento de Clientes </strong>
+					</p>
+					<button type="button" id="showIngresar" name="showIngresar"
+						class="btn btn-primary btn-sm botones">Ingresar</button>
+					<button type="button" id="showModificar" name="showModificar"
+						class="btn btn-primary btn-sm botones">Modificar</button>
+					<button type="button" id="showEliminar" name="showEliminar"
+						class="btn btn-primary btn-sm botones">Eliminar</button>
+					<input type="hidden" id="tipoAccion" name="tipoAccion" />
+				</div>
+
+				<div class="col-md-9" id="seccionCreate">
+					<h3>Ingresar Cliente</h3>
+					<br>
+					<div class="form-group">
+						<label class="col-md-2 control-label" id="lblCodigo">Código</label>
+						<div class="col-md-3" id="areaCodigo">
+							<div class="input-group">
+								<input type="text" size="5" class="form-control input-sm"
+									id="codcliente" name="codcliente" th:field="*{codcliente}"
+									placeholder="Ingrese el Código" required /> <span
+									class="input-group-btn" onkeypress="buscarClienteEnter()" id="botonBuscar">
+
+									<button type="button" class="btn btn-default btn-sm"
+										id="btnBuscaC" name="btnBuscaC" onclick="buscarClienteEnter()">
+										<i class="fas fa-search"></i>
+									</button>
+								</span>
+							</div>
+						</div>
+						<div class="col-md-10" id="btnBuscaLista">
+							<button type="button" onclick="obtenerListaCliente()"
+								class="btn btn-primary btn-block btn-sm">Mostrar
+								Clientes</button>
+						</div>
+						<label class="col-md-2 control-label" id="lblNombre">Nombres</label>
+						<div class="col-md-3">
+							<input type="text" class="form-control input-sm"
+								id="nombrecliente" name="nombrecliente"
+								th:field="*{nombrecliente}" placeholder="Ingrese los Nombres"
+								required />
+						</div>
+
+					</div>
+					
+					<div class="form-group" id="grupo1">
+						<label
+							class="col-md-2 control-label visible-lg hidden-md hidden-xs visible-sm">Apellido Paterno</label> 
+						<div class="col-md-3">
+							<input type="text" class="form-control input-sm"
+								id="appatcliente" name="appatcliente"
+								th:field="*{appatcliente}" placeholder="Ingrese el apellido paterno"
+								required />
+						</div>
+						<label class="col-md-2 control-label">Apellido Materno
+						</label>
+						<div class="col-md-3">
+							<input type="text" class="form-control input-sm"
+								id="apmatcliente" name="apmatcliente"
+								th:field="*{apmatcliente}" placeholder="Ingrese el apellido materno"
+								required />
+						</div>
+					</div>
+					
+					<div class="form-group" id="grupo3">
+						<label class="col-md-2 control-label">Telefono</label>
+						<div class="col-md-3 ">
+							<input type="text" class="form-control input-sm" 
+								th:field="*{telefonocliente}" id="telefonocliente" name="telefonocliente"
+								placeholder="Ingrese el telefono"></input>
+						</div>
+						<label class="col-md-2 control-label">Correo</label>
+						<div class="col-md-4 ">
+							<input type="text" class="form-control input-sm" 
+								th:field="*{correocliente}" id="correocliente" name="correocliente"
+								placeholder="Ingrese el correo"></input>
+						</div>
+					</div>
+					<div id="c_tablaCliente"></div>
+				</div>
+			</div>
+			<input type="hidden" id="operacion" name="operacion" /> <input
+				type="hidden" id="auxCodCliente" name="auxCodInsumo" />
+			<div class="form-group" id="auxBotonesFooter">
+				<div class="col-md-6 col-md-offset-3" style="float: right">
+					<button type="submit" class="btn btn-success btn-sm ">Guardar</button>
+					<button type="button" class="btn btn-danger btn-sm ">Cancelar</button>
+				</div>
+			</div>
+
+			<!-- Modal Confirmar Eliminacion -->
+
+			<div class="modal fade" id="myModal" role="dialog">
+				<div class="modal-dialog modal-sm">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal">&times;</button>
+							<h4 class="modal-title">Confirmar eliminaci&oacute;n.</h4>
+						</div>
+						<div class="modal-body">
+							<p id="parrafoConfirmacion"></p>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-success"
+								onclick="eliminarClienteConf()">SI</button>
+							<button type="button" class="btn btn-danger" data-dismiss="modal">NO</button>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</form>
+		<br> <br>
+	</div>
+	<script type="text/javascript" th:src="@{/js/clases/jsMantClientes.js}"></script>
+
+</body>
+</html>

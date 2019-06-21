@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head
+	th:include="/auxiliar/import :: headFragment (pageTitle='He&A Coorp')">
+<meta charset="UTF-8" />
+
+</head>
+<link rel="stylesheet" type="text/css" href="#"
+	th:href="@{/css/cLogin.css}" />
+<body>
+<div style="height: 100px;"></div>
+	<div class="panel-login form-horizontal col-md-offset-4"
+		id="panel-login">
+		<form th:action="@{/logincheck}" method="POST">
+			<input type="hidden" name="${_csrf.parameterName}"
+				value="${_csrf.token}" /> <img th:src="@{/images/logo.png}"
+				class="visible-lg visible-md hidden-xs"
+				style="margin-left: auto; margin-right: auto;" /> <label
+				style="width: 100%; text-align: center;" class="col-md-6">
+				Iniciar Sesi&oacute;n</label>
+			<div class="form-group ">
+				<div class="col-md-12 mx-auto my-1">
+					<div th:if="${error!=null}"
+						th:include="/auxiliar/alert :: alerta(mensaje='Error...! Usuario y/o Contrasena incorrecta.', tipo='danger')"></div>
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-md-4 control-label">Usuario</label>
+				<div class="col-md-7">
+					<input type="text" class="form-control input-sm"
+						placeholder="Ingrese el ID" id="username" name="username" />
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="col-md-4 control-label">Contrase&ntilde;a</label>
+				<div class="col-md-7">
+					<input type="password" class="form-control input-sm"
+						placeholder="Ingrese la contrase&ntilde;a" id="contrasena"
+						name="contrasena" />
+				</div>
+			</div>
+			<div class="form-group ">
+				<div class="col-md-12 mx-auto my-1">
+					<button
+						style="width: 100%; background-color: #8DC3DE; border-color: #8DC3DE;"
+						type="submit" class="btn btn-primary input-sm">Ingresar</button>
+				</div>
+			</div>
+		</form>
+		<br> <br>
+	</div>
+</body>
+</html>
